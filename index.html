@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+	<meta name="title" content="9BRO - The easy comic maker!" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="9bro, memes, funny pictures, comic maker, 9gag, jokes, interesting, cool, fun, humor, humour,"/>
+	<meta name="description" content="9BRO - The easy comic maker!"/>
+
+    <!-- facebook -->
+	<meta property="og:title" content="9bro" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://www.9bro.com" />
+	<meta property="og:image" content="http://www.9bro.com/logo.gif" />
+	<meta property="og:description" content="9BRO - The easy comic maker!" />
+	<meta property="og:site_name" content="9bro" />
+	<meta property="fb:admins" content="20706217" />
+
+    <!-- styles -->
+	<link rel="stylesheet" type="text/css" href="9bro.css" />
+	
+	<!-- javascript -->
+
+	<script src="jquery-1.7.2.js" type="text/javascript"></script>
+	<script src="9bro.js" type="text/javascript"></script>
+	<script src="kinetic-v3.9.1.js" type="text/javascript"></script>
+	<script src="base64.js" type="text/javascript"></script>
+	<script src="canvas2image.js" type="text/javascript"></script>
+	
+	<script src="BlobBuilder.min.js" type="text/javascript"></script>
+	<script src="canvas-toBlob.min.js" type="text/javascript"></script>
+	<script src="FileSaver.min.js" type="text/javascript"></script>
+
+
+	
+    <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="./bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+ 
+</head>
+
+<body>
+
+	<!-- Qualaroo for 9bro.com -->
+	<!-- Paste this code right after the <body> tag on every page of your site. -->
+	<script type="text/javascript">var _kiq = _kiq || [];</script>
+	<script type="text/javascript" src="//s3.amazonaws.com/ki.js/46341/9c_.js" async="true"></script>
+
+    <!-- facebook software developer kit -->	
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=187071938081502";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="http://www.9bro.com">
+				<img src="9bro.png"/>
+			</a>
+			<div class="nav-collapse">
+				<ul class="nav">
+					<button id="clearCanvas" class="btn">Clear</button>
+					<a id="saveCanvas" class="btn btn-primary">Save</a>
+				</ul>
+				<ul class="nav pull-right" style="margin-top:8px">
+					<li><button id="newDrawing" class="btn btn-success" style="margin-top:0px;margin-right:9px">Draw</button></li>
+					<li><input id="searchInput" type="text" class="search-query span3 pull-right textClass" placeholder="Search or Image link"></li>
+					<li><label class="checkbox" style="padding-top:5px;margin-left:15px;margin-bottom:0px" ><input id="webSearchCheckbox" type="checkbox" checked="checked"> Web</label></li>
+					<li class="divider-vertical"></li>
+					<li><a style="padding-bottom:5px; padding-top:5px" data-toggle="modal" href="#aboutDialog">About</a></li>
+				<ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div>
+</div>
+
+<div class="container">
+		<div id="aboutDialog" class="modal hide fade in" >
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal">×</button>
+				<h3>
+					About 9BRO
+				</h3>
+			</div>
+			<div class="modal-body">
+				<div class="page-header">
+		          <h1>Why? <small>Y U NO read below!??</small></h1>
+		        </div>
+				<div class="span5">
+				  <label>
+				    <h3>Fun</h3>
+				    <p>Because making memes would be more fun if it were easy.  So, 9BRO makes it easier.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>Forever Alone No More!</h3>
+				    <p>Make sweet comics and surround yourself with the adoration of an adoring 9gag public. Hey, maybe you'll make it to the Hot page.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>Zombie Apocalypse</h3>
+				    <p>Zombies are coming to get us. They're probably runners. 9BRO comics are the only known repellent. Protect yourself, make a comic.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>Time Travel Paradoxes</h3>
+				    <p>We've sent a future version of you back in the past to kill your grandpa and marry an ancestor. 9BRO comics can restore the original timeline.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>Robot Overlords</h3>
+				    <p>The easiest way to defeat a robot is to make it laugh. Good luck.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>The Moon is Chasing You</h3>
+				    <p>Have you ever noticed the moon seems to follow you while staring out your car window at night? Making meme comics can stop that.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>Vampires in Popular Culture</h3>
+				    <p>Vampires own Hollywood. 9BRO meme comics are made of sunlight cured, crucifix-shaped, vampire-killing stakes.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>Justin Bieber</h3>
+				    <p>You're jealous of Justin Bieber's undeserved worship. Make meme comics disparaging him.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>Video Games</h3>
+				    <p>9BRO meme comics have been custom engineered to promote only the video games you love.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>Ninjas</h3>
+				    <p>10 ninjas are reading over your shoulder while you create 9BRO meme comics. Usually there are 17.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>Chuck Norris</h3>
+				    <p>Chuck Norris wrote War and Peace using nothing but 9BRO.com and an actual war.</p>
+				  </label>
+				</div>
+				<div class="span5">
+				  <label>
+				    <h3>Don't want to live on this planet anymore</h3>
+				    <p>9BRO comics are stored on planets that can be only reached via jetpack.</p>
+				  </label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a> 
+			</div>
+		</div>
+		
+	
+	<div id="saveDialog" class="modal hide fade in" >
+		<div class="modal-header">
+			<button class="close" data-dismiss="modal">×</button>
+			<h3>
+				Right-click Image > Save as
+			</h3>
+		</div>
+		<div class="modal-body">
+			<p id="saveImage">
+				
+			</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a> 
+<!-- 		<a href="#" class="btn btn-primary">Save changes</a> -->
+		</div>
+	</div>
+
+	<!-- left -->
+	<div class="row">
+		<!-- input controls -->
+		<div id="left" class="span6">
+			<!-- draw modal -->
+			<div id="custom" style="display:none">
+				<div id="colorSelectorGroup">
+					<div id="colorSelected">
+						<div class="selectedCell" style="background-color: #000000";></div>
+					</div>
+					<div id="colorGroup">
+						<div class="blackCell" style="background-color: #000000";></div>
+						<div class="colorCell" style="background-color: #464646";></div>
+						<div class="colorCell" style="background-color: #787878";></div>
+						<div class="colorCell" style="background-color: #990030";></div>
+						<div class="colorCell" style="background-color: #ed1c24";></div>
+						<div class="colorCell" style="background-color: #ff7e00";></div>
+						<div class="colorCell" style="background-color: #ffc20e";></div>
+						<div class="colorCell" style="background-color: #fff200";></div>
+						<div class="colorCell" style="background-color: #a8e61d";></div>
+						<div class="colorCell" style="background-color: #22b14c";></div>
+						<div class="colorCell" style="background-color: #00b7ef";></div>
+						<div class="colorCell" style="background-color: #4d6df3";></div>
+						<div class="colorCell" style="background-color: #2f3699";></div>
+						<div class="colorCell" style="background-color: #6f3198";></div>
+						</br>
+						<div class="whiteCell" style="background-color: #ffffff";></div>
+						<div class="colorCell" style="background-color: #dcdcdc";></div>
+						<div class="colorCell" style="background-color: #b4b4b4";></div>
+						<div class="colorCell" style="background-color: #9c5a3c";></div>
+						<div class="colorCell" style="background-color: #ffa3b1";></div>
+						<div class="colorCell" style="background-color: #e5aa7a";></div>
+						<div class="colorCell" style="background-color: #f5e49c";></div>
+						<div class="colorCell" style="background-color: #fff9bd";></div>
+						<div class="colorCell" style="background-color: #d3f9bc";></div>
+						<div class="colorCell" style="background-color: #9dbb61";></div>
+						<div class="colorCell" style="background-color: #99d9ea";></div>
+						<div class="colorCell" style="background-color: #709ad1";></div>
+						<div class="colorCell" style="background-color: #546d8e";></div>
+						<div class="colorCell" style="background-color: #b5a5d5";></div>
+					</div>
+					<div id="brushes">
+						<div class="brushContainer">
+							<div id="brush1" class="brush"></div>
+						</div>
+						<div class="brushContainer">
+							<div id="brush2" class="brush"></div>
+						</div>
+						<div class="brushContainer">
+							<div id="brush3" class="brush"></div>
+						</div>
+						<div class="brushContainer">
+							<div id="brush4" class="brush"></div>
+						</div>
+						<div class="brushContainer">
+							<div id="brush5" class="brush"></div>
+						</div>
+					</div>
+					<div id="cancelSave" class="btn-toolbar">
+						<a id="clearDrawing" class="btn btn-mini" href="#">Clear</a>
+						<a id="saveDrawing" class="btn btn-primary btn-mini" href="#">Save</a>
+						<a id="cancelDrawing" class="btn btn-danger btn-mini" href="#">Cancel</a>
+					</div>
+				</div>
+				<div id="drawContainer">
+				</div>
+			</div>
+			<!-- Tools: text, lines, change height  -->
+			<div id="tools">
+				<div class="input-append">
+					<input id="textInput" class="span5 textClass" placeholder="Enter text, bro" type="text"><button id="textButton" class="btn" type="button">Add</button>
+				</div>
+				<div class="row">
+					<div class="span3">
+						<select id="fontFamily" class="span2">
+							<option>Arial</option>
+							<option selected="selected">Courier</option>
+							<option>Impact</option>
+							<option>Times New Roman</option>
+						</select>
+						<select id="fontSize" class="span1">
+							<option>10</option>
+							<option selected="selected">15</option>
+							<option>20</option>
+							<option>25</option>
+							<option>30</option>
+							<option>35</option>
+							<option>40</option>
+						</select>
+					</div>
+					<div class="span3">
+					<div class="btn-toolbar pull-right" style="margin-top:0px;margin-bottom:0px">
+						<div class="btn-group">
+							<button id="hLine" class="btn">Horizontal</i></button>
+							<button id="vLine" class="btn">Vertical</i></button>
+						</div>
+						<div class="btn-group">
+							<button id="bigger" class="btn"><i class="icon-chevron-down"></i></button>
+							<button id="smaller" class="btn"><i class="icon-chevron-up"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- canvas -->
+		<div id="canvasContainer" style="margin-top:75px">
+			<div id="container" onmousedown="return false;"></div>
+		</div>
+	</div>
+
+	<!-- right -->	
+	<div id="right">
+		<!-- facebook like -->			
+		<div class="fb-like" data-href="http://www.9bro.com" data-send="false" data-width="450" data-show-faces="false" data-font="lucida grande"></div>
+		
+		<div class="progress" style="display:none">
+			<div id="progressBar" class="bar"></div>
+		</div>
+		<a class="btn btn-info" id="clearSearch" href="#" style="display:none; margin-bottom:5px">Clear Search</a>
+		<img id='ajax-loader' src='ajax-loader.gif' style="display:none"/>
+		<div class="alert alert-error" id="slowError" style="display:none">
+			<strong>Wow, this is slow!</strong> If it takes too long, it will stop loading.
+		</div>
+		<div id="memesUsed" style="display:none"></div>
+		<div id="result"></div>
+		<div id="memes"></div>
+	</div>
+</div>
+
+
+</div> <!-- /container -->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+
+<script src="./bootstrap/js/bootstrap-transition.js"></script>
+<script src="./bootstrap/js/bootstrap-button.js"></script>
+<script src="./bootstrap/js/bootstrap-typeahead.js"></script>
+<script src="./bootstrap/js/bootstrap-alert.js"></script>
+<script src="./bootstrap/js/bootstrap-modal.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32062107-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body></html>
