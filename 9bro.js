@@ -1299,7 +1299,7 @@ $(document).ready(function(){
 					imageObj.width = imageObj.width/2;
 					loadMeme(imageObj);
 				}
-				imageObj.src = 'memes/common/'+file[5];
+				imageObj.src = 'memes/common/'+file[6];
 //				$('#memesUsed').show();
 //				$(this).clone().prependTo('#memesUsed');
 			})	
